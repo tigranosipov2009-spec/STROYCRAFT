@@ -2629,6 +2629,14 @@ body::after {
   max-width: 22ch;
 }
 
+.section-heading--performance {
+  max-width: 980px;
+}
+
+.section-heading--performance h2 {
+  max-width: 18ch;
+}
+
 .heading-break--estimate {
   display: block;
 }
@@ -2878,6 +2886,19 @@ body::after {
 
 .page-cases .hero__actions {
   margin-top: 20px;
+}
+
+.page-contact .page-hero__content {
+  max-width: 860px;
+  padding-top: 34px;
+}
+
+.page-contact .page-hero__content h1 {
+  max-width: 12.8ch;
+}
+
+.page-contact .page-hero__media {
+  background-position: center calc(50% + 30px);
 }
 
 .case-story {
@@ -3213,6 +3234,10 @@ body::after {
     max-width: none;
   }
 
+  .section-heading--performance h2 {
+    max-width: none;
+  }
+
   .final-cta__box--home h2 {
     max-width: none;
   }
@@ -3276,16 +3301,17 @@ body::after {
 .floating-contact-widget__link {
   display: inline-flex;
   align-items: center;
-  gap: 10px;
-  min-height: 56px;
-  padding: 8px 10px 8px 8px;
-  border-radius: 999px;
+  justify-content: center;
+  width: 58px;
+  height: 58px;
+  min-height: 58px;
+  padding: 0;
+  border-radius: 20px;
   border: 1px solid rgba(255, 248, 240, 0.38);
   background: rgba(255, 251, 245, 0.92);
   backdrop-filter: blur(16px);
   box-shadow: 0 18px 34px rgba(20, 27, 37, 0.14);
   color: var(--text);
-  font-weight: 800;
 }
 
 .floating-contact-widget__link:hover,
@@ -3299,15 +3325,15 @@ body::after {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  flex: 0 0 40px;
+  width: 58px;
+  height: 58px;
+  border-radius: 20px;
+  flex: 0 0 58px;
 }
 
 .floating-contact-widget__icon svg {
-  width: 20px;
-  height: 20px;
+  width: 22px;
+  height: 22px;
 }
 
 .floating-contact-widget__link--telegram .floating-contact-widget__icon {
@@ -3320,6 +3346,10 @@ body::after {
   color: #fff;
 }
 
+.floating-contact-widget__link span:not(.floating-contact-widget__icon) {
+  display: none;
+}
+
 @media (max-width: 720px) {
   .floating-contact-widget {
     right: 12px;
@@ -3329,14 +3359,9 @@ body::after {
 
   .floating-contact-widget__link {
     width: 54px;
+    height: 54px;
     min-height: 54px;
-    padding: 0;
-    justify-content: center;
     border-radius: 18px;
-  }
-
-  .floating-contact-widget__link span:not(.floating-contact-widget__icon) {
-    display: none;
   }
 
   .floating-contact-widget__icon {
