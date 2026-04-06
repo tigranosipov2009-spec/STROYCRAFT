@@ -193,6 +193,54 @@ const readEstimate = () => {
   }
 };
 
+const initQuickEstimate = () => {
+  const areaInput = document.querySelector("[data-quick-area]");
+  const areaValue = document.querySelector("[data-quick-area-value]");
+  const totalOutput = document.querySelector("[data-quick-total]");
+  const summaryOutput = document.querySelector("[data-quick-summary]");
+  const quickForm = document.getElementById("quickLeadForm");
+
+  if (!areaInput || !areaValue || !totalOutput || !summaryOutput) return;
+
+  const collectQuickState = () => {
+    const area = Number(areaInput.value);
+    const type = document.querySelector('input[name="quickType"]:checked');
+    const total = area * Number(type?.dataset.price || 0);
+
+    return {
+      area,
+      renovation: type?.value || "",
+      total,
+      min: total * 0.92,
+      max: total * 1.08
+    };
+  };
+
+  const renderQuickState = (persist = false) => {
+    const state = collectQuickState();
+    areaValue.textContent = String(state.area);
+    totalOutput.textContent = `${formatCurrency(state.min)} - ${formatCurrency(state.max)}`;
+    summaryOutput.textContent = `${state.area} м² · ${state.renovation}`;
+
+    if (persist) {
+      saveEstimate(state);
+    }
+  };
+
+  areaInput.addEventListener("input", () => renderQuickState(true));
+  document.querySelectorAll('input[name="quickType"]').forEach((input) => {
+    input.addEventListener("change", () => renderQuickState(true));
+  });
+
+  if (quickForm) {
+    quickForm.addEventListener("submit", () => {
+      saveEstimate(collectQuickState());
+    });
+  }
+
+  renderQuickState(false);
+};
+
 const initCalculator = () => {
   const wizard = document.getElementById("calculatorWizard");
   if (!wizard) return;
@@ -259,7 +307,7 @@ const initCalculator = () => {
     };
   };
 
-  const renderSummary = () => {
+  const renderSummary = (persist = false) => {
     const state = collectState();
 
     areaValue.textContent = String(state.area);
@@ -283,7 +331,9 @@ const initCalculator = () => {
       )
       .join("");
 
-    saveEstimate(state);
+    if (persist) {
+      saveEstimate(state);
+    }
   };
 
   const setStep = (step, options = {}) => {
@@ -318,11 +368,11 @@ const initCalculator = () => {
   };
 
   applyLeadContext();
-  renderSummary();
+  renderSummary(false);
   setStep(1, { shouldScroll: false });
 
-  wizard.addEventListener("input", renderSummary);
-  wizard.addEventListener("change", renderSummary);
+  wizard.addEventListener("input", () => renderSummary(true));
+  wizard.addEventListener("change", () => renderSummary(true));
 
   nextButton.addEventListener("click", () => setStep(currentStep + 1));
   prevButton.addEventListener("click", () => setStep(currentStep - 1));
@@ -342,7 +392,7 @@ const initCalculator = () => {
     wizard.querySelector('input[name="water"]').checked = true;
     wizard.querySelector('input[name="materials"]').checked = true;
     areaInput.value = "65";
-    renderSummary();
+    renderSummary(false);
     setStep(1);
   });
 };
@@ -404,6 +454,7 @@ document.addEventListener("DOMContentLoaded", () => {
   initParallax();
   initBeforeAfter();
   initPhoneInputs();
+  initQuickEstimate();
   initCalculator();
   initLeadContext();
   initYear();

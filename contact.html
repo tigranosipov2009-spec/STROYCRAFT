@@ -16,8 +16,11 @@
   <header class="site-header" data-header>
     <div class="container site-header__inner">
       <a class="brand" href="index.html" aria-label="Строй Крафт">
-        <span class="brand__mark">Строй Крафт</span>
-        <span class="brand__sub">ремонт квартир в Севастополе</span>
+        <img class="brand__logo" src="logo-ck.svg" alt="" width="52" height="52">
+        <span class="brand__lockup">
+          <span class="brand__mark">Строй Крафт</span>
+          <span class="brand__sub">ремонт квартир в Севастополе</span>
+        </span>
       </a>
       <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="siteNav" data-menu-toggle>
         <span></span>
@@ -25,14 +28,14 @@
       </button>
       <nav class="site-nav" id="siteNav" data-nav>
         <a href="index.html">Главная</a>
-        <a href="premium.html">Премиум ремонт</a>
+        <a href="premium.html">Премиум</a>
         <a href="calculator.html">Калькулятор</a>
         <a href="cases.html">Кейсы</a>
         <a href="contact.html" aria-current="page">Контакты</a>
       </nav>
       <div class="site-header__actions">
         <a class="header-phone" href="tel:+79781234567">+7 (978) 123-45-67</a>
-        <a class="button button--small" href="calculator.html">Рассчитать</a>
+        <a class="button button--small header-cta" href="calculator.html">Рассчитать стоимость</a>
       </div>
     </div>
   </header>
@@ -43,10 +46,14 @@
       <div class="page-hero__shade"></div>
       <div class="container page-hero__content">
         <p class="hero__eyebrow" data-reveal>Связь без долгих ожиданий</p>
-        <h1 data-reveal data-lead-title>Оставьте заявку, и мы подскажем лучший сценарий ремонта для вашей квартиры</h1>
+        <div class="hero-pills" data-reveal>
+          <span>Телефон, Telegram или WhatsApp</span>
+          <span>Ответим по делу</span>
+        </div>
+        <h1 data-reveal data-lead-title>Оставьте заявку, и мы предложим следующий правильный шаг по вашему объекту</h1>
         <p class="hero__lead" data-reveal data-lead-copy>
-          Можно начать с быстрого расчёта, а можно сразу запросить детальный разбор проекта. Ответим,
-          уточним задачу и покажем следующий понятный шаг.
+          Можно начать с быстрого расчёта. Можно сразу заказать детальный разбор проекта. Ответим,
+          уточним задачу и скажем, как лучше двигаться дальше.
         </p>
       </div>
     </section>
@@ -64,6 +71,14 @@
             <label>
               <span>Телефон</span>
               <input type="tel" name="phone" placeholder="+7 (___) ___-__-__" required data-phone-input>
+            </label>
+            <label>
+              <span>Как с вами связаться</span>
+              <select name="contactMethod">
+                <option value="Телефон">По телефону</option>
+                <option value="Telegram">Telegram</option>
+                <option value="WhatsApp">WhatsApp</option>
+              </select>
             </label>
             <label>
               <span>Что нужно</span>
@@ -89,7 +104,7 @@
           <div class="contact-card" data-reveal>
             <p class="kicker">Telegram</p>
             <a class="contact-card__link" href="https://t.me/stroykraft_sev" target="_blank" rel="noopener">@stroykraft_sev</a>
-            <p>Подходит, если хотите отправить планировку, фото квартиры или список пожеланий.</p>
+            <p>Удобно, если хотите отправить планировку, фото квартиры или коротко описать задачу.</p>
           </div>
           <div class="contact-card" data-reveal data-estimate-banner hidden></div>
         </aside>
@@ -127,10 +142,10 @@
         <div>
           <p class="kicker">Удобный старт</p>
           <h2>Если хотите сначала цифры, начните с калькулятора</h2>
-          <p>Это быстрый способ понять вилку бюджета и не гадать, какой уровень ремонта подходит именно вам.</p>
+          <p>Это быстрый способ понять вилку бюджета и не гадать, какой уровень ремонта нужен именно вам.</p>
         </div>
         <div class="final-cta__actions">
-          <a class="button" href="calculator.html">Рассчитать стоимость</a>
+          <a class="button" href="calculator.html">Рассчитать стоимость ремонта</a>
           <a class="button button--secondary" href="premium.html">Изучить premium-подход</a>
         </div>
       </div>
@@ -149,7 +164,7 @@
       <div>
         <h3>Страницы</h3>
         <a href="index.html">Главная</a>
-        <a href="premium.html">Премиум ремонт</a>
+        <a href="premium.html">Премиум</a>
         <a href="calculator.html">Калькулятор</a>
         <a href="cases.html">Кейсы</a>
       </div>

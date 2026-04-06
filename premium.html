@@ -16,8 +16,11 @@
   <header class="site-header" data-header>
     <div class="container site-header__inner">
       <a class="brand" href="index.html" aria-label="Строй Крафт">
-        <span class="brand__mark">Строй Крафт</span>
-        <span class="brand__sub">ремонт квартир в Севастополе</span>
+        <img class="brand__logo" src="logo-ck.svg" alt="" width="52" height="52">
+        <span class="brand__lockup">
+          <span class="brand__mark">Строй Крафт</span>
+          <span class="brand__sub">ремонт квартир в Севастополе</span>
+        </span>
       </a>
       <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="siteNav" data-menu-toggle>
         <span></span>
@@ -25,14 +28,14 @@
       </button>
       <nav class="site-nav" id="siteNav" data-nav>
         <a href="index.html">Главная</a>
-        <a href="premium.html" aria-current="page">Премиум ремонт</a>
+        <a href="premium.html" aria-current="page">Премиум</a>
         <a href="calculator.html">Калькулятор</a>
         <a href="cases.html">Кейсы</a>
         <a href="contact.html">Контакты</a>
       </nav>
       <div class="site-header__actions">
         <a class="header-phone" href="tel:+79781234567">+7 (978) 123-45-67</a>
-        <a class="button button--small" href="contact.html?lead=review">Разбор проекта</a>
+        <a class="button button--small header-cta" href="calculator.html">Рассчитать стоимость</a>
       </div>
     </div>
   </header>
@@ -43,15 +46,26 @@
       <div class="page-hero__shade"></div>
       <div class="container page-hero__content">
         <p class="hero__eyebrow" data-reveal>Премиальный подход без лишнего пафоса</p>
-        <h1 data-reveal>Премиум ремонт означает не роскошь ради картинки, а спокойствие на годы вперёд</h1>
+        <div class="hero-pills" data-reveal>
+          <span>Квартиры от 2 млн ₽</span>
+          <span>Инженерия под контролем</span>
+        </div>
+        <h1 data-reveal>Премиум ремонт - это не показная роскошь, а спокойный результат на годы вперёд</h1>
         <p class="hero__lead" data-reveal>
-          Настоящий премиум начинается с проекта, инженерии, геометрии, тихой работы систем и аккуратной
-          деталировки. Именно это создаёт ощущение дорогой квартиры каждый день.
+          Он начинается с проекта, ровной геометрии, сильной инженерии и деталей, которые не
+          начинают раздражать после заселения.
         </p>
         <div class="hero__actions" data-reveal>
           <a class="button" href="contact.html?lead=review">Получить детальный разбор проекта</a>
-          <a class="button button--ghost-light" href="calculator.html">Рассчитать стоимость</a>
+          <a class="button button--ghost-light" href="calculator.html">Рассчитать стоимость ремонта</a>
         </div>
+      </div>
+    </section>
+
+    <section class="section section--tight">
+      <div class="container compact-banner compact-banner--soft" data-reveal>
+        <p class="compact-banner__title">Премиум для нас - это контроль, ресурс и тишина в эксплуатации.</p>
+        <p>Мы не перегружаем проект дорогими решениями ради вида. Усиливаем только то, что реально влияет на комфорт и срок службы квартиры.</p>
       </div>
     </section>
 
@@ -59,7 +73,7 @@
       <div class="container">
         <div class="section-heading" data-reveal>
           <p class="kicker">Что входит в premium-подход</p>
-          <h2>Четыре слоя, которые дают реальный результат, а не только красивый кадр</h2>
+          <h2>Четыре основы, из которых складывается дорогой и спокойный ремонт</h2>
         </div>
         <div class="pillar-grid">
           <article data-reveal>
@@ -126,9 +140,9 @@
             <h2>Где premium действительно окупается</h2>
           </div>
           <div class="bullet-stack">
-            <p data-reveal><strong>На горизонте 3-5 лет:</strong> меньше аварийных ремонтов, меньше косметических исправлений и спокойнее эксплуатация квартиры.</p>
-            <p data-reveal><strong>При ежедневном пользовании:</strong> качественный свет, тихая сантехника, стабильные покрытия и удобная планировка ощущаются постоянно.</p>
-            <p data-reveal><strong>При продаже или аренде:</strong> квартира выглядит собранной, ликвидной и не просит скидку из-за уставшей отделки.</p>
+            <p data-reveal><strong>Через 3-5 лет:</strong> меньше аварийных ремонтов и меньше усталости от отделки.</p>
+            <p data-reveal><strong>Каждый день:</strong> свет, вода, примыкания и материалы работают тихо и аккуратно.</p>
+            <p data-reveal><strong>При продаже:</strong> квартира выглядит собранной и не просит скидку из-за слабого ремонта.</p>
           </div>
         </div>
         <div class="split__media" data-reveal>
@@ -167,12 +181,12 @@
       <div class="container final-cta__box" data-reveal>
         <div>
           <p class="kicker">Нужен проект под ваш бюджет</p>
-          <h2>Покажем, где нужен premium-уровень, а где можно сохранить бюджет без потери качества</h2>
-          <p>Это помогает не переплачивать за лишнее и не экономить там, где потом дороже исправлять.</p>
+          <h2>Покажем, где нужен премиальный уровень, а где можно сохранить бюджет без потери качества</h2>
+          <p>Так вы не переплачиваете за лишнее и не экономите там, где потом дорого исправлять.</p>
         </div>
         <div class="final-cta__actions">
           <a class="button" href="contact.html?lead=review">Получить разбор проекта</a>
-          <a class="button button--secondary" href="calculator.html">Рассчитать стоимость</a>
+          <a class="button button--secondary" href="calculator.html">Рассчитать стоимость ремонта</a>
         </div>
       </div>
     </section>

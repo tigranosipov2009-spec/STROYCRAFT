@@ -16,8 +16,11 @@
   <header class="site-header" data-header>
     <div class="container site-header__inner">
       <a class="brand" href="index.html" aria-label="Строй Крафт">
-        <span class="brand__mark">Строй Крафт</span>
-        <span class="brand__sub">ремонт квартир в Севастополе</span>
+        <img class="brand__logo" src="logo-ck.svg" alt="" width="52" height="52">
+        <span class="brand__lockup">
+          <span class="brand__mark">Строй Крафт</span>
+          <span class="brand__sub">ремонт квартир в Севастополе</span>
+        </span>
       </a>
       <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="siteNav" data-menu-toggle>
         <span></span>
@@ -25,14 +28,14 @@
       </button>
       <nav class="site-nav" id="siteNav" data-nav>
         <a href="index.html">Главная</a>
-        <a href="premium.html">Премиум ремонт</a>
+        <a href="premium.html">Премиум</a>
         <a href="calculator.html">Калькулятор</a>
         <a href="cases.html" aria-current="page">Кейсы</a>
         <a href="contact.html">Контакты</a>
       </nav>
       <div class="site-header__actions">
         <a class="header-phone" href="tel:+79781234567">+7 (978) 123-45-67</a>
-        <a class="button button--small" href="calculator.html">Рассчитать</a>
+        <a class="button button--small header-cta" href="calculator.html">Рассчитать стоимость</a>
       </div>
     </div>
   </header>
@@ -43,11 +46,21 @@
       <div class="page-hero__shade"></div>
       <div class="container page-hero__content">
         <p class="hero__eyebrow" data-reveal>Кейсы и визуальные референсы</p>
-        <h1 data-reveal>Показываем не просто красивый интерьер, а задачи, которые решили для квартиры</h1>
+        <div class="hero-pills" data-reveal>
+          <span>До / после</span>
+          <span>Проблема / решение / результат</span>
+        </div>
+        <h1 data-reveal>Показываем не просто интерьер, а задачи, которые решили для владельца квартиры</h1>
         <p class="hero__lead" data-reveal>
-          Ниже собраны типовые сценарии проектов: что было неудобно до ремонта, какие решения мы заложили
-          и какой результат получил владелец в эксплуатации.
+          Ниже типовые проекты: что мешало до ремонта, какие решения мы заложили и что получил клиент в реальной эксплуатации.
         </p>
+      </div>
+    </section>
+
+    <section class="section section--tight">
+      <div class="container compact-banner compact-banner--soft" data-reveal>
+        <p class="compact-banner__title">Фокус на результате, а не на декоративной подаче.</p>
+        <p>Для каждой квартиры показываем, где была проблема, что мы сделали и почему это дало более сильный результат в жизни.</p>
       </div>
     </section>
 
@@ -199,10 +212,10 @@
         <div>
           <p class="kicker">Хотите похожий результат</p>
           <h2>Покажем, какие решения нужны именно вашей квартире</h2>
-          <p>Можно начать с быстрого расчёта или сразу запросить детальный разбор проекта с рекомендациями по уровню ремонта.</p>
+          <p>Можно начать с расчёта, а можно сразу обсудить объект и получить разбор проекта по вашей задаче.</p>
         </div>
         <div class="final-cta__actions">
-          <a class="button" href="calculator.html">Рассчитать стоимость</a>
+          <a class="button" href="calculator.html">Рассчитать стоимость ремонта</a>
           <a class="button button--secondary" href="contact.html?lead=review">Получить разбор проекта</a>
         </div>
       </div>
@@ -221,7 +234,7 @@
       <div>
         <h3>Страницы</h3>
         <a href="index.html">Главная</a>
-        <a href="premium.html">Премиум ремонт</a>
+        <a href="premium.html">Премиум</a>
         <a href="calculator.html">Калькулятор</a>
         <a href="contact.html">Контакты</a>
       </div>
