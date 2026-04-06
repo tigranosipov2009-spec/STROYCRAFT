@@ -5,6 +5,8 @@ const formatCurrency = (value) =>
     maximumFractionDigits: 0
   }).format(Math.round(value));
 
+const formatFromCurrency = (value) => `от ${formatCurrency(value)}`;
+
 const getQueryParams = () => new URLSearchParams(window.location.search);
 
 const initHeader = () => {
@@ -18,6 +20,18 @@ const initHeader = () => {
     header.classList.toggle("site-header--scrolled", window.scrollY > 18);
   };
 
+  const syncMenuState = (isOpen) => {
+    header.classList.toggle("site-header--menu-open", isOpen);
+  };
+
+  const closeMenu = () => {
+    if (!toggle || !nav) return;
+    nav.classList.remove("is-open");
+    toggle.classList.remove("is-open");
+    toggle.setAttribute("aria-expanded", "false");
+    syncMenuState(false);
+  };
+
   updateHeader();
   window.addEventListener("scroll", updateHeader, { passive: true });
 
@@ -27,14 +41,17 @@ const initHeader = () => {
     const isOpen = nav.classList.toggle("is-open");
     toggle.classList.toggle("is-open", isOpen);
     toggle.setAttribute("aria-expanded", String(isOpen));
+    syncMenuState(isOpen);
   });
 
   nav.querySelectorAll("a").forEach((link) => {
-    link.addEventListener("click", () => {
-      nav.classList.remove("is-open");
-      toggle.classList.remove("is-open");
-      toggle.setAttribute("aria-expanded", "false");
-    });
+    link.addEventListener("click", closeMenu);
+  });
+
+  window.addEventListener("resize", () => {
+    if (window.innerWidth > 900) {
+      closeMenu();
+    }
   });
 };
 
@@ -205,21 +222,21 @@ const initQuickEstimate = () => {
   const collectQuickState = () => {
     const area = Number(areaInput.value);
     const type = document.querySelector('input[name="quickType"]:checked');
-    const total = area * Number(type?.dataset.price || 0);
+    const projectFloor = 1900000;
+    const total = Math.max(area * Number(type?.dataset.price || 0), projectFloor);
 
     return {
       area,
       renovation: type?.value || "",
       total,
-      min: total * 0.92,
-      max: total * 1.08
+      projectFloor
     };
   };
 
   const renderQuickState = (persist = false) => {
     const state = collectQuickState();
     areaValue.textContent = String(state.area);
-    totalOutput.textContent = `${formatCurrency(state.min)} - ${formatCurrency(state.max)}`;
+    totalOutput.textContent = formatFromCurrency(state.total);
     summaryOutput.textContent = `${state.area} м² · ${state.renovation}`;
 
     if (persist) {
@@ -268,10 +285,10 @@ const initCalculator = () => {
 
     if (lead !== "review") return;
 
-    leadKicker.textContent = "Детальный разбор проекта";
-    leadTitle.textContent = "Оставьте контакт и получите экспертный разбор проекта";
-    leadCopy.textContent = "Мы используем выбранные параметры как основу, а затем подскажем слабые места квартиры, приоритеты по бюджету и следующий правильный шаг.";
-    submitButton.textContent = "Получить детальный разбор";
+    leadKicker.textContent = "Бесплатный разбор проекта";
+    leadTitle.textContent = "Оставьте контакт и получите бесплатный разбор проекта";
+    leadCopy.textContent = "Используем выбранные параметры как отправную точку, а затем подскажем слабые места объекта, приоритеты по бюджету и правильный следующий шаг.";
+    submitButton.textContent = "Получить бесплатный разбор";
   };
 
   const collectState = () => {
@@ -290,8 +307,9 @@ const initCalculator = () => {
       Number(materials?.dataset.price || 0) +
       extrasTotal;
 
-    const total = area * pricePerSquare;
-    const min = total * 0.92;
+    const projectFloor = 1900000;
+    const total = Math.max(area * pricePerSquare, projectFloor);
+    const min = Math.max(total * 0.94, projectFloor);
     const max = total * 1.08;
 
     return {
@@ -303,7 +321,8 @@ const initCalculator = () => {
       extras: extras.map((extra) => extra.value),
       total,
       min,
-      max
+      max,
+      projectFloor
     };
   };
 
@@ -311,7 +330,7 @@ const initCalculator = () => {
     const state = collectState();
 
     areaValue.textContent = String(state.area);
-    totalShort.textContent = formatCurrency(state.total);
+    totalShort.textContent = formatFromCurrency(state.total);
     totalRange.textContent = `${formatCurrency(state.min)} - ${formatCurrency(state.max)}`;
     summaryShort.textContent = `${state.area} м² · ${state.renovation} · ${state.electricity}`;
 
@@ -408,17 +427,17 @@ const initLeadContext = () => {
   const estimate = readEstimate();
 
   if (lead === "review") {
-    if (title) title.textContent = "Получите детальный разбор проекта перед стартом ремонта";
+    if (title) title.textContent = "Получите бесплатный разбор проекта перед стартом ремонта";
     if (copy) copy.textContent = "Разберём ваш запрос, подскажем приоритеты по бюджету, объясним слабые места объекта и поможем определить правильный уровень ремонта.";
-    if (kicker) kicker.textContent = "Детальный разбор проекта";
-    if (goalSelect) goalSelect.value = "Детальный разбор проекта";
+    if (kicker) kicker.textContent = "Бесплатный разбор проекта";
+    if (goalSelect) goalSelect.value = "Бесплатный разбор проекта";
   }
 
   if (estimate && estimateBanner) {
     estimateBanner.hidden = false;
     estimateBanner.innerHTML = `
       <p class="kicker">Ваш последний расчёт</p>
-      <strong class="contact-card__link">${formatCurrency(estimate.total)}</strong>
+      <strong class="contact-card__link">${formatFromCurrency(estimate.total)}</strong>
       <p>${estimate.area} м² · ${estimate.renovation}</p>
       <p>Используем этот ориентир как отправную точку для дальнейшего обсуждения.</p>
     `;
@@ -435,7 +454,7 @@ const initLeadContext = () => {
       showToast(`${name}, спасибо. Мы скоро свяжемся с вами.`);
       form.reset();
       if (goalSelect && lead === "review") {
-        goalSelect.value = "Детальный разбор проекта";
+        goalSelect.value = "Бесплатный разбор проекта";
       }
     });
   });
