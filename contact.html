@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Контакты | Строй Крафт</title>
+  <meta name="description" content="Свяжитесь со Строй Крафт: ремонт квартир в Севастополе, быстрый расчёт, детальный разбор проекта, телефон и Telegram.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <script defer src="script.js"></script>
+</head>
+<body class="page-contact">
+  <header class="site-header" data-header>
+    <div class="container site-header__inner">
+      <a class="brand" href="index.html" aria-label="Строй Крафт">
+        <span class="brand__mark">Строй Крафт</span>
+        <span class="brand__sub">ремонт квартир в Севастополе</span>
+      </a>
+      <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="siteNav" data-menu-toggle>
+        <span></span>
+        <span></span>
+      </button>
+      <nav class="site-nav" id="siteNav" data-nav>
+        <a href="index.html">Главная</a>
+        <a href="premium.html">Премиум ремонт</a>
+        <a href="calculator.html">Калькулятор</a>
+        <a href="cases.html">Кейсы</a>
+        <a href="contact.html" aria-current="page">Контакты</a>
+      </nav>
+      <div class="site-header__actions">
+        <a class="header-phone" href="tel:+79781234567">+7 (978) 123-45-67</a>
+        <a class="button button--small" href="calculator.html">Рассчитать</a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="page-hero page-hero--compact" style="--hero-image: url('https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?auto=format&fit=crop&w=1600&q=80');">
+      <div class="page-hero__media" data-parallax></div>
+      <div class="page-hero__shade"></div>
+      <div class="container page-hero__content">
+        <p class="hero__eyebrow" data-reveal>Связь без долгих ожиданий</p>
+        <h1 data-reveal data-lead-title>Оставьте заявку, и мы подскажем лучший сценарий ремонта для вашей квартиры</h1>
+        <p class="hero__lead" data-reveal data-lead-copy>
+          Можно начать с быстрого расчёта, а можно сразу запросить детальный разбор проекта. Ответим,
+          уточним задачу и покажем следующий понятный шаг.
+        </p>
+      </div>
+    </section>
+
+    <section class="section section--light">
+      <div class="container contact-layout">
+        <div class="contact-panel" data-reveal>
+          <p class="kicker" data-lead-kicker>Форма связи</p>
+          <h2>Отправьте заявку</h2>
+          <form class="lead-form" data-form-context="contact">
+            <label>
+              <span>Ваше имя</span>
+              <input type="text" name="name" placeholder="Как к вам обращаться" required>
+            </label>
+            <label>
+              <span>Телефон</span>
+              <input type="tel" name="phone" placeholder="+7 (___) ___-__-__" required data-phone-input>
+            </label>
+            <label>
+              <span>Что нужно</span>
+              <select name="goal" data-goal-select>
+                <option value="Быстрый расчёт">Быстрый расчёт</option>
+                <option value="Детальный разбор проекта">Детальный разбор проекта</option>
+              </select>
+            </label>
+            <label>
+              <span>Коротко о квартире</span>
+              <textarea name="message" rows="4" placeholder="Например: 68 м², новостройка, нужен капитальный ремонт к осени"></textarea>
+            </label>
+            <button class="button button--wide" type="submit">Отправить заявку</button>
+          </form>
+        </div>
+
+        <aside class="contact-sidebar">
+          <div class="contact-card" data-reveal>
+            <p class="kicker">Телефон</p>
+            <a class="contact-card__link" href="tel:+79781234567">+7 (978) 123-45-67</a>
+            <p>Удобно для быстрого расчёта и первичной консультации.</p>
+          </div>
+          <div class="contact-card" data-reveal>
+            <p class="kicker">Telegram</p>
+            <a class="contact-card__link" href="https://t.me/stroykraft_sev" target="_blank" rel="noopener">@stroykraft_sev</a>
+            <p>Подходит, если хотите отправить планировку, фото квартиры или список пожеланий.</p>
+          </div>
+          <div class="contact-card" data-reveal data-estimate-banner hidden></div>
+        </aside>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="section-heading" data-reveal>
+          <p class="kicker">Как проходит первая консультация</p>
+          <h2>Без сложных терминов и давления</h2>
+        </div>
+        <div class="timeline timeline--three">
+          <article class="timeline__item" data-reveal>
+            <span>01</span>
+            <h3>Уточняем задачу</h3>
+            <p>Смотрим площадь, тип дома, желаемый уровень ремонта и сроки.</p>
+          </article>
+          <article class="timeline__item" data-reveal>
+            <span>02</span>
+            <h3>Показываем сценарии</h3>
+            <p>Объясняем, где нужен усиленный подход, а где можно удержать бюджет.</p>
+          </article>
+          <article class="timeline__item" data-reveal>
+            <span>03</span>
+            <h3>Договариваемся о следующем шаге</h3>
+            <p>Либо делаем замер и смету, либо готовим детальный разбор проекта под ваш запрос.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section final-cta">
+      <div class="container final-cta__box" data-reveal>
+        <div>
+          <p class="kicker">Удобный старт</p>
+          <h2>Если хотите сначала цифры, начните с калькулятора</h2>
+          <p>Это быстрый способ понять вилку бюджета и не гадать, какой уровень ремонта подходит именно вам.</p>
+        </div>
+        <div class="final-cta__actions">
+          <a class="button" href="calculator.html">Рассчитать стоимость</a>
+          <a class="button button--secondary" href="premium.html">Изучить premium-подход</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container site-footer__grid">
+      <div>
+        <a class="brand brand--footer" href="index.html">
+          <span class="brand__mark">Строй Крафт</span>
+          <span class="brand__sub">ремонт квартир под ключ</span>
+        </a>
+        <p>Связываемся быстро, говорим по делу и помогаем выбрать уровень ремонта без лишней путаницы.</p>
+      </div>
+      <div>
+        <h3>Страницы</h3>
+        <a href="index.html">Главная</a>
+        <a href="premium.html">Премиум ремонт</a>
+        <a href="calculator.html">Калькулятор</a>
+        <a href="cases.html">Кейсы</a>
+      </div>
+      <div>
+        <h3>Связь</h3>
+        <a href="tel:+79781234567">+7 (978) 123-45-67</a>
+        <a href="https://t.me/stroykraft_sev" target="_blank" rel="noopener">Telegram</a>
+        <p>Ежедневно с 09:00 до 20:00</p>
+      </div>
+    </div>
+    <div class="container site-footer__bottom">
+      <p>© <span data-year></span> Строй Крафт</p>
+      <p>Контакты и заявки на ремонт квартир в Севастополе</p>
+    </div>
+  </footer>
+</body>
+</html>

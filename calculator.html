@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Калькулятор ремонта квартиры в Севастополе | Строй Крафт</title>
+  <meta name="description" content="Пошаговый калькулятор ремонта квартиры в Севастополе: тип ремонта, электрика, вода, материалы и итоговая оценка бюджета с формой заявки.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <script defer src="script.js"></script>
+</head>
+<body class="page-calculator">
+  <header class="site-header" data-header>
+    <div class="container site-header__inner">
+      <a class="brand" href="index.html" aria-label="Строй Крафт">
+        <span class="brand__mark">Строй Крафт</span>
+        <span class="brand__sub">ремонт квартир в Севастополе</span>
+      </a>
+      <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="siteNav" data-menu-toggle>
+        <span></span>
+        <span></span>
+      </button>
+      <nav class="site-nav" id="siteNav" data-nav>
+        <a href="index.html">Главная</a>
+        <a href="premium.html">Премиум ремонт</a>
+        <a href="calculator.html" aria-current="page">Калькулятор</a>
+        <a href="cases.html">Кейсы</a>
+        <a href="contact.html">Контакты</a>
+      </nav>
+      <div class="site-header__actions">
+        <a class="header-phone" href="tel:+79781234567">+7 (978) 123-45-67</a>
+        <a class="button button--small" href="contact.html?lead=review">Разбор проекта</a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="page-hero page-hero--compact" style="--hero-image: url('https://images.unsplash.com/photo-1484154218962-a197022b5858?auto=format&fit=crop&w=1600&q=80');">
+      <div class="page-hero__media" data-parallax></div>
+      <div class="page-hero__shade"></div>
+      <div class="container page-hero__content">
+        <p class="hero__eyebrow" data-reveal>Быстрый ориентир по бюджету</p>
+        <h1 data-reveal>Калькулятор ремонта квартиры</h1>
+        <p class="hero__lead" data-reveal>
+          Выберите уровень ремонта и ключевые инженерные решения. Мы покажем ориентир бюджета и
+          поможем понять, почему один вариант надёжнее другого.
+        </p>
+      </div>
+    </section>
+
+    <section class="section section--light">
+      <div class="container calculator-layout">
+        <form class="calculator" id="calculatorWizard" novalidate>
+          <div class="calculator__top" data-reveal>
+            <div>
+              <p class="kicker">Пошаговый расчёт</p>
+              <h2>Соберите ваш сценарий ремонта</h2>
+            </div>
+            <div class="wizard-progress">
+              <span data-progress-label>Шаг 1 из 6</span>
+              <div class="wizard-progress__bar">
+                <span data-progress-bar></span>
+              </div>
+            </div>
+          </div>
+
+          <section class="wizard-step is-active" data-step="1" data-reveal>
+            <div class="wizard-step__header">
+              <p class="kicker">Шаг 1</p>
+              <h3>Площадь квартиры</h3>
+              <p>Площадь нужна, чтобы оценить общий объём работ. Чем честнее стартовая цифра, тем полезнее ориентир.</p>
+            </div>
+            <div class="range-card">
+              <label for="areaRange">Площадь: <strong><span data-area-value>65</span> м²</strong></label>
+              <input id="areaRange" name="area" type="range" min="30" max="180" step="5" value="65" data-area-range>
+              <div class="range-card__labels">
+                <span>30 м²</span>
+                <span>180 м²</span>
+              </div>
+            </div>
+          </section>
+
+          <section class="wizard-step" data-step="2">
+            <div class="wizard-step__header">
+              <p class="kicker">Шаг 2</p>
+              <h3>Какой тип ремонта нужен</h3>
+              <p>Это главная разница по бюджету. Выбирайте не “самый дорогой”, а тот уровень, который решает вашу задачу.</p>
+            </div>
+            <div class="option-grid">
+              <label class="option-card option-card--selectable">
+                <input type="radio" name="renovationType" value="Рациональный ремонт" data-price="22000" checked>
+                <span class="option-card__title">Рациональный ремонт</span>
+                <span class="option-card__price">от 22 000 ₽ / м²</span>
+                <span class="option-card__desc">Чистый, аккуратный ремонт с проверенными решениями без переплаты за лишний декор.</span>
+              </label>
+              <label class="option-card option-card--selectable">
+                <input type="radio" name="renovationType" value="Капитальный ремонт" data-price="32000">
+                <span class="option-card__title">Капитальный ремонт</span>
+                <span class="option-card__price">от 32 000 ₽ / м²</span>
+                <span class="option-card__desc">Полная перезагрузка квартиры с усиленной подготовкой оснований и инженерии.</span>
+              </label>
+              <label class="option-card option-card--selectable">
+                <input type="radio" name="renovationType" value="Премиум ремонт" data-price="46000">
+                <span class="option-card__title">Премиум ремонт</span>
+                <span class="option-card__price">от 46 000 ₽ / м²</span>
+                <span class="option-card__desc">Для квартир, где важны высокий ресурс, точная геометрия и дорогой уровень исполнения.</span>
+              </label>
+            </div>
+          </section>
+
+          <section class="wizard-step" data-step="3">
+            <div class="wizard-step__header">
+              <p class="kicker">Шаг 3</p>
+              <h3>Электрическая система</h3>
+              <p>Хорошая электрика даёт спокойствие: техника работает стабильно, нагрузка распределена, а доступ к щиту остаётся удобным.</p>
+            </div>
+            <div class="option-grid">
+              <label class="option-card option-card--selectable">
+                <input type="radio" name="electricity" value="Базовая безопасность" data-price="2900" checked>
+                <span class="option-card__title">Базовая безопасность</span>
+                <span class="option-card__price">+2 900 ₽ / м²</span>
+                <span class="option-card__desc">Для спокойной эксплуатации без избыточных решений. Подходит для стандартного набора техники.</span>
+              </label>
+              <label class="option-card option-card--selectable">
+                <input type="radio" name="electricity" value="Усиленная система" data-price="5100">
+                <span class="option-card__title">Усиленная система</span>
+                <span class="option-card__price">+5 100 ₽ / м²</span>
+                <span class="option-card__desc">Отдельные группы и запас по нагрузке. Лучше для семей и кухни с активной техникой.</span>
+              </label>
+              <label class="option-card option-card--selectable">
+                <input type="radio" name="electricity" value="Премиум электрика" data-price="7900">
+                <span class="option-card__title">Премиум электрика</span>
+                <span class="option-card__price">+7 900 ₽ / м²</span>
+                <span class="option-card__desc">Сценарии света, удобный щит, запас по мощности и уровень комфорта на долгий срок.</span>
+              </label>
+            </div>
+          </section>
+
+          <section class="wizard-step" data-step="4">
+            <div class="wizard-step__header">
+              <p class="kicker">Шаг 4</p>
+              <h3>Система воды</h3>
+              <p>Здесь важны тихая работа, долговечность и доступ к ключевым узлам. Это та часть ремонта, где переделки всегда дорогие.</p>
+            </div>
+            <div class="option-grid">
+              <label class="option-card option-card--selectable">
+                <input type="radio" name="water" value="Стандартная схема" data-price="2400" checked>
+                <span class="option-card__title">Стандартная схема</span>
+                <span class="option-card__price">+2 400 ₽ / м²</span>
+                <span class="option-card__desc">Рабочее решение для компактных квартир с простым сценарием потребления воды.</span>
+              </label>
+              <label class="option-card option-card--selectable">
+                <input type="radio" name="water" value="Коллекторная система" data-price="4300">
+                <span class="option-card__title">Коллекторная система</span>
+                <span class="option-card__price">+4 300 ₽ / м²</span>
+                <span class="option-card__desc">Стабильнее по давлению и удобнее в обслуживании. Оптимально для семейного пользования.</span>
+              </label>
+              <label class="option-card option-card--selectable">
+                <input type="radio" name="water" value="Премиум водоснабжение" data-price="6900">
+                <span class="option-card__title">Премиум водоснабжение</span>
+                <span class="option-card__price">+6 900 ₽ / м²</span>
+                <span class="option-card__desc">Усиленная схема с продуманным доступом и уровнем сборки, рассчитанным на долгую эксплуатацию.</span>
+              </label>
+            </div>
+          </section>
+
+          <section class="wizard-step" data-step="5">
+            <div class="wizard-step__header">
+              <p class="kicker">Шаг 5</p>
+              <h3>Материалы и отделка</h3>
+              <p>Не всё должно быть дорогим. Важно, чтобы покрытия и фурнитура выдерживали именно вашу нагрузку и не уставали слишком быстро.</p>
+            </div>
+            <div class="option-grid">
+              <label class="option-card option-card--selectable">
+                <input type="radio" name="materials" value="Проверенные решения" data-price="3600" checked>
+                <span class="option-card__title">Проверенные решения</span>
+                <span class="option-card__price">+3 600 ₽ / м²</span>
+                <span class="option-card__desc">Сбалансированный выбор для аккуратного результата без лишнего роста бюджета.</span>
+              </label>
+              <label class="option-card option-card--selectable">
+                <input type="radio" name="materials" value="Усиленные материалы" data-price="6200">
+                <span class="option-card__title">Усиленные материалы</span>
+                <span class="option-card__price">+6 200 ₽ / м²</span>
+                <span class="option-card__desc">Лучше держат нагрузку в проходных и мокрых зонах, дольше сохраняют вид.</span>
+              </label>
+              <label class="option-card option-card--selectable">
+                <input type="radio" name="materials" value="Премиальная отделка" data-price="9800">
+                <span class="option-card__title">Премиальная отделка</span>
+                <span class="option-card__price">+9 800 ₽ / м²</span>
+                <span class="option-card__desc">Финишный уровень для дорогой визуальной целостности и тактильно качественного пространства.</span>
+              </label>
+            </div>
+          </section>
+
+          <section class="wizard-step" data-step="6">
+            <div class="wizard-step__header">
+              <p class="kicker">Шаг 6</p>
+              <h3>Дополнительные опции</h3>
+              <p>Это то, что часто усиливает комфорт: тепло пола, шумоизоляция, встроенное хранение и дополнительный техконтроль.</p>
+            </div>
+            <div class="option-grid option-grid--compact">
+              <label class="option-card option-card--selectable option-card--checkbox">
+                <input type="checkbox" name="extras" value="Тёплый пол" data-price="2500">
+                <span class="option-card__title">Тёплый пол</span>
+                <span class="option-card__desc">Комфорт в санузлах, кухне и проходных зонах.</span>
+              </label>
+              <label class="option-card option-card--selectable option-card--checkbox">
+                <input type="checkbox" name="extras" value="Шумоизоляция спальни" data-price="2100">
+                <span class="option-card__title">Шумоизоляция спальни</span>
+                <span class="option-card__desc">Сильнее ощущается в ежедневной жизни, чем многие декоративные вложения.</span>
+              </label>
+              <label class="option-card option-card--selectable option-card--checkbox">
+                <input type="checkbox" name="extras" value="Встроенное хранение" data-price="3200">
+                <span class="option-card__title">Встроенное хранение</span>
+                <span class="option-card__desc">Помогает сохранить интерьер чистым и организованным.</span>
+              </label>
+              <label class="option-card option-card--selectable option-card--checkbox">
+                <input type="checkbox" name="extras" value="Усиленный техконтроль" data-price="1700">
+                <span class="option-card__title">Усиленный техконтроль</span>
+                <span class="option-card__desc">Подходит для объектов с высокими ожиданиями к деталям и срокам.</span>
+              </label>
+            </div>
+          </section>
+
+          <section class="wizard-step wizard-step--result" data-step="7">
+            <div class="wizard-step__header">
+              <p class="kicker" data-lead-kicker>Финальный шаг</p>
+              <h3 data-lead-title>Получите расчёт и следующий шаг по вашему проекту</h3>
+              <p data-lead-copy>Оставьте имя и телефон. Мы перезвоним, уточним детали и поможем превратить ориентир по бюджету в понятную смету.</p>
+            </div>
+            <div class="result-card">
+              <div class="result-card__amount">
+                <span>Ориентир бюджета</span>
+                <strong data-total-range>3 967 000 - 4 630 000 ₽</strong>
+                <p>Точная смета зависит от состояния квартиры, состава работ и уровня чистовых материалов.</p>
+              </div>
+              <div class="result-card__summary" data-summary-list></div>
+            </div>
+            <div class="contact-inline">
+              <label>
+                <span>Ваше имя</span>
+                <input type="text" name="clientName" placeholder="Как к вам обращаться" required>
+              </label>
+              <label>
+                <span>Телефон</span>
+                <input type="tel" name="clientPhone" placeholder="+7 (___) ___-__-__" required data-phone-input>
+              </label>
+            </div>
+          </section>
+
+          <div class="wizard-controls">
+            <button class="button button--ghost" type="button" data-prev-step disabled>Назад</button>
+            <button class="button" type="button" data-next-step>Далее</button>
+            <button class="button" type="submit" data-submit-step hidden>Отправить заявку</button>
+          </div>
+        </form>
+
+        <aside class="calculator-summary" data-reveal>
+          <p class="kicker">Онлайн-ориентир</p>
+          <h2>Предварительный бюджет</h2>
+          <div class="calculator-summary__price" data-total-short>4 298 000 ₽</div>
+          <div class="calculator-summary__meta" data-summary-short>
+            65 м² · Рациональный ремонт · Базовая безопасность
+          </div>
+          <div class="calculator-summary__note">
+            Если нужен не просто расчёт, а экспертный взгляд на проект, выберите второй путь входа.
+          </div>
+          <a class="button button--secondary button--wide" href="contact.html?lead=review">Получить детальный разбор проекта</a>
+        </aside>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container site-footer__grid">
+      <div>
+        <a class="brand brand--footer" href="index.html">
+          <span class="brand__mark">Строй Крафт</span>
+          <span class="brand__sub">ремонт квартир под ключ</span>
+        </a>
+        <p>Калькулятор помогает быстро получить ориентир и понять, какие решения сильнее влияют на бюджет.</p>
+      </div>
+      <div>
+        <h3>Страницы</h3>
+        <a href="index.html">Главная</a>
+        <a href="premium.html">Премиум ремонт</a>
+        <a href="cases.html">Кейсы</a>
+        <a href="contact.html">Контакты</a>
+      </div>
+      <div>
+        <h3>Связь</h3>
+        <a href="tel:+79781234567">+7 (978) 123-45-67</a>
+        <a href="https://t.me/stroykraft_sev" target="_blank" rel="noopener">Telegram</a>
+        <p>Ежедневно с 09:00 до 20:00</p>
+      </div>
+    </div>
+    <div class="container site-footer__bottom">
+      <p>© <span data-year></span> Строй Крафт</p>
+      <p>Калькулятор ремонта квартиры в Севастополе</p>
+    </div>
+  </footer>
+</body>
+</html>
