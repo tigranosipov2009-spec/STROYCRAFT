@@ -222,7 +222,7 @@ const initQuickEstimate = () => {
   const collectQuickState = () => {
     const area = Number(areaInput.value);
     const type = document.querySelector('input[name="quickType"]:checked');
-    const projectFloor = 1900000;
+    const projectFloor = 1800000;
     const total = Math.max(area * Number(type?.dataset.price || 0), projectFloor);
 
     return {
@@ -280,6 +280,50 @@ const initCalculator = () => {
   let currentStep = 1;
   const totalActionSteps = 6;
 
+  const bindOptionCards = () => {
+    const cards = wizard.querySelectorAll(".option-card--selectable");
+
+    cards.forEach((card) => {
+      const input = card.querySelector("input");
+      if (!input) return;
+
+      input.tabIndex = -1;
+
+      const activateCard = () => {
+        const currentScroll = window.scrollY;
+
+        if (input.type === "radio") {
+          if (!input.checked) {
+            input.checked = true;
+          }
+        } else if (input.type === "checkbox") {
+          input.checked = !input.checked;
+        }
+
+        input.dispatchEvent(new Event("input", { bubbles: true }));
+        input.dispatchEvent(new Event("change", { bubbles: true }));
+
+        window.requestAnimationFrame(() => {
+          window.scrollTo({ top: currentScroll, behavior: "auto" });
+        });
+      };
+
+      card.addEventListener("click", (event) => {
+        event.preventDefault();
+        activateCard();
+      });
+
+      card.addEventListener("keydown", (event) => {
+        if (event.key !== "Enter" && event.key !== " ") return;
+        event.preventDefault();
+        activateCard();
+      });
+
+      card.tabIndex = 0;
+      card.setAttribute("role", input.type === "checkbox" ? "checkbox" : "radio");
+    });
+  };
+
   const applyLeadContext = () => {
     const lead = getQueryParams().get("lead");
 
@@ -307,7 +351,7 @@ const initCalculator = () => {
       Number(materials?.dataset.price || 0) +
       extrasTotal;
 
-    const projectFloor = 1900000;
+    const projectFloor = 1800000;
     const total = Math.max(area * pricePerSquare, projectFloor);
     const min = Math.max(total * 0.94, projectFloor);
     const max = total * 1.08;
@@ -370,8 +414,8 @@ const initCalculator = () => {
     progressBar.style.width = `${(capped / totalActionSteps) * 100}%`;
 
     prevButton.disabled = currentStep === 1;
-    nextButton.hidden = currentStep >= steps.length;
-    submitButton.hidden = currentStep !== steps.length;
+    nextButton.toggleAttribute("hidden", currentStep >= steps.length);
+    submitButton.toggleAttribute("hidden", currentStep !== steps.length);
 
     if (shouldScroll) {
       window.scrollTo({ top: wizard.offsetTop - 120, behavior: "smooth" });
@@ -387,6 +431,7 @@ const initCalculator = () => {
   };
 
   applyLeadContext();
+  bindOptionCards();
   renderSummary(false);
   setStep(1, { shouldScroll: false });
 
@@ -466,6 +511,34 @@ const initYear = () => {
   });
 };
 
+const initFloatingContacts = () => {
+  if (document.querySelector(".floating-contact-widget")) return;
+
+  const widget = document.createElement("div");
+  widget.className = "floating-contact-widget";
+  widget.innerHTML = `
+    <a class="floating-contact-widget__link floating-contact-widget__link--telegram" href="https://t.me/stroykraft_sev" target="_blank" rel="noopener" aria-label="Написать в Telegram">
+      <span class="floating-contact-widget__icon" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none" focusable="false">
+          <path d="M20.6 4.2 3.7 10.8c-1.2.5-1.2 1.2-.2 1.5l4.3 1.3 1.7 5.3c.2.6.1.8.8.8.5 0 .7-.2 1-.5l2.1-2 4.4 3.2c.8.4 1.4.2 1.6-.8L22 5.7c.3-1.2-.5-1.8-1.4-1.5Z" stroke="currentColor" stroke-width="1.35" stroke-linejoin="round"/>
+          <path d="m9.2 13.3 8.9-5.7" stroke="currentColor" stroke-width="1.35" stroke-linecap="round"/>
+        </svg>
+      </span>
+      <span>Telegram</span>
+    </a>
+    <a class="floating-contact-widget__link floating-contact-widget__link--phone" href="tel:+79781234567" aria-label="Позвонить +7 (978) 123-45-67">
+      <span class="floating-contact-widget__icon" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none" focusable="false">
+          <path d="M6.5 4.8c.5-.5 1.3-.6 1.9-.2l2 1.2c.7.4 1 1.3.7 2l-.7 1.8a1 1 0 0 0 .2 1.1l2.4 2.4a1 1 0 0 0 1.1.2l1.8-.7c.7-.3 1.6 0 2 .7l1.2 2c.4.6.3 1.4-.2 1.9l-1.1 1.1c-.8.8-2 1.1-3.1.7-2.3-.7-4.6-2.4-6.8-4.6-2.2-2.2-3.9-4.5-4.6-6.8-.4-1.1-.1-2.3.7-3.1L6.5 4.8Z" stroke="currentColor" stroke-width="1.35" stroke-linejoin="round"/>
+        </svg>
+      </span>
+      <span>+7 (978) 123-45-67</span>
+    </a>
+  `;
+
+  document.body.appendChild(widget);
+};
+
 document.addEventListener("DOMContentLoaded", () => {
   initHeader();
   initReveal();
@@ -476,5 +549,6 @@ document.addEventListener("DOMContentLoaded", () => {
   initQuickEstimate();
   initCalculator();
   initLeadContext();
+  initFloatingContacts();
   initYear();
 });
