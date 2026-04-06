@@ -1,12 +1,12 @@
 <svg width="256" height="256" viewBox="0 0 256 256" fill="none" xmlns="http://www.w3.org/2000/svg">
   <defs>
     <linearGradient id="ring" x1="36" y1="36" x2="220" y2="220" gradientUnits="userSpaceOnUse">
-      <stop stop-color="#7EC0FF"/>
-      <stop offset="1" stop-color="#1D4FA3"/>
+      <stop stop-color="#E8C892"/>
+      <stop offset="1" stop-color="#835B34"/>
     </linearGradient>
     <linearGradient id="mark" x1="90" y1="76" x2="180" y2="182" gradientUnits="userSpaceOnUse">
-      <stop stop-color="#2A6ED7"/>
-      <stop offset="1" stop-color="#173D82"/>
+      <stop stop-color="#D8B27A"/>
+      <stop offset="1" stop-color="#7A5531"/>
     </linearGradient>
   </defs>
   <circle cx="128" cy="128" r="104" stroke="url(#ring)" stroke-width="12"/>
