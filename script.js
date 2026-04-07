@@ -56,23 +56,38 @@ const initHeader = () => {
 };
 
 const initReveal = () => {
-  const nodes = document.querySelectorAll("[data-reveal]");
+  const nodes = [...document.querySelectorAll("[data-reveal]")];
 
   if (!nodes.length) return;
+
+  const revealNode = (node) => node.classList.add("is-visible");
+
+  nodes
+    .filter((node) => node.closest(".hero, .page-hero"))
+    .forEach(revealNode);
+
+  const deferredNodes = nodes.filter((node) => !node.classList.contains("is-visible"));
+
+  if (!deferredNodes.length) return;
+
+  if (!("IntersectionObserver" in window)) {
+    deferredNodes.forEach(revealNode);
+    return;
+  }
 
   const observer = new IntersectionObserver(
     (entries) => {
       entries.forEach((entry) => {
         if (entry.isIntersecting) {
-          entry.target.classList.add("is-visible");
+          revealNode(entry.target);
           observer.unobserve(entry.target);
         }
       });
     },
-    { threshold: 0.16, rootMargin: "0px 0px -40px 0px" }
+    { threshold: 0.14, rootMargin: "0px 0px -8% 0px" }
   );
 
-  nodes.forEach((node) => observer.observe(node));
+  deferredNodes.forEach((node) => observer.observe(node));
 };
 
 const initCounters = () => {
