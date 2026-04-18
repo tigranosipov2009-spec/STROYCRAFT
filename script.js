@@ -22,6 +22,7 @@ const initHeader = () => {
 
   const syncMenuState = (isOpen) => {
     header.classList.toggle("site-header--menu-open", isOpen);
+    document.body.classList.toggle("is-menu-open", isOpen);
   };
 
   const closeMenu = () => {
@@ -48,11 +49,25 @@ const initHeader = () => {
     link.addEventListener("click", closeMenu);
   });
 
+  document.addEventListener("click", (event) => {
+    if (!nav.classList.contains("is-open")) return;
+    if (header.contains(event.target)) return;
+    closeMenu();
+  });
+
+  document.addEventListener("keydown", (event) => {
+    if (event.key === "Escape") {
+      closeMenu();
+    }
+  });
+
   window.addEventListener("resize", () => {
     if (window.innerWidth > 900) {
       closeMenu();
     }
   });
+
+  window.addEventListener("orientationchange", closeMenu);
 };
 
 const initReveal = () => {
