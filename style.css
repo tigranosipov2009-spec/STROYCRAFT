@@ -5530,7 +5530,7 @@ button,
   .page-cases .page-hero__content > h1,
   .page-contact .page-hero__content > h1 {
     margin-left: 0 !important;
-    padding-left: 0 !important;
+    padding-left: 10px !important;
     text-indent: 0 !important;
   }
 
@@ -5704,6 +5704,14 @@ button,
   .page-home .hero-copy,
   .page-hero__content {
     padding-inline: 12px 4px;
+  }
+
+  .page-home .hero-copy > h1,
+  .page-premium .page-hero__content > h1,
+  .page-calculator .page-hero__content > h1,
+  .page-cases .page-hero__content > h1,
+  .page-contact .page-hero__content > h1 {
+    padding-left: 8px !important;
   }
 
   .site-header__actions .button--small,
