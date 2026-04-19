@@ -5530,7 +5530,7 @@ button,
   .page-cases .page-hero__content > h1,
   .page-contact .page-hero__content > h1 {
     margin-left: 0 !important;
-    padding-left: 10px !important;
+    padding-left: 26px !important;
     text-indent: 0 !important;
   }
 
@@ -5711,7 +5711,7 @@ button,
   .page-calculator .page-hero__content > h1,
   .page-cases .page-hero__content > h1,
   .page-contact .page-hero__content > h1 {
-    padding-left: 8px !important;
+    padding-left: 22px !important;
   }
 
   .site-header__actions .button--small,
