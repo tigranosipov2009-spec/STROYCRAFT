@@ -5415,6 +5415,11 @@ button,
 }
 
 @media (max-width: 720px) {
+  .hero,
+  .page-hero {
+    overflow: visible;
+  }
+
   .site-header .container {
     width: min(calc(100% - 14px), 100%);
   }
@@ -5515,7 +5520,8 @@ button,
 
   .page-home .hero-copy,
   .page-hero__content {
-    padding-inline: 0;
+    padding-inline: 14px 6px;
+    overflow: visible;
   }
 
   .page-home .hero-copy > h1,
@@ -5530,10 +5536,11 @@ button,
 
   .hero h1,
   .page-hero h1 {
-    max-width: 100%;
+    max-width: calc(100% - 2px);
     font-size: clamp(2rem, 8.7vw, 2.9rem);
     line-height: 0.98;
     text-wrap: balance;
+    overflow: visible;
   }
 
   .hero__lead,
@@ -5694,6 +5701,11 @@ button,
 }
 
 @media (max-width: 560px) {
+  .page-home .hero-copy,
+  .page-hero__content {
+    padding-inline: 12px 4px;
+  }
+
   .site-header__actions .button--small,
   .header-cta {
     min-height: 36px;
@@ -5704,6 +5716,7 @@ button,
   .hero h1,
   .page-hero h1 {
     font-size: clamp(1.84rem, 8.4vw, 2.5rem);
+    max-width: calc(100% - 2px);
   }
 
   .section-heading h2 {
